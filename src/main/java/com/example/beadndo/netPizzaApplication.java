@@ -10,8 +10,8 @@ import java.io.IOException;
 public class netPizzaApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(netPizzaApplication.class.getResource("olvas2-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(netPizzaApplication.class.getResource("fooldal-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
         stage.setTitle("Pizzanet");
         stage.setScene(scene);
         stage.show();

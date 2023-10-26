@@ -5,16 +5,23 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static com.example.beadndo.SqliteConnection.Connector;
 
@@ -38,18 +45,18 @@ public class OlvasController implements Initializable {
     @FXML
     public TableColumn<osszesites, Integer> ar_column;
     @FXML
-    private Label isConnected;
+    public Button vissza_button;
+    @FXML
     public ConnectionModel connectionModel = new ConnectionModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(connectionModel.isDbConnected())
         {
-            isConnected.setText("Sikerült kapcsolódni az adatbázishoz");
             showAdat();
         }
         else{
-            isConnected.setText("Nem sikerült kapcsolódni");
+
         }
     }
 
@@ -89,4 +96,23 @@ public class OlvasController implements Initializable {
         olvas_tablazat.setItems(list);
     }
 
+    public void vissza_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("fooldal-view.fxml"));
+            /*
+             * if "fx:controller" is not set in fxml
+             * fxmlLoader.setController(NewWindowController);
+             */
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Stage stage = new Stage();
+            stage.setTitle("Netpizza");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
 }

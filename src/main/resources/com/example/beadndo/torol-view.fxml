@@ -19,5 +19,7 @@
          </children>
       </VBox>
       <Button fx:id="torles_button" layoutX="214.0" layoutY="70.0" mnemonicParsing="false" onAction="#torles_click" text="Törlés" />
+      <Button fx:id="vissza_button" layoutX="24.0" layoutY="69.0" mnemonicParsing="false" onAction="#vissza_click" prefHeight="25.0" prefWidth="72.0" text="Vissza" />
+      <Label fx:id="isConnected" layoutX="131.0" layoutY="111.0" />
    </children>
 </AnchorPane>
