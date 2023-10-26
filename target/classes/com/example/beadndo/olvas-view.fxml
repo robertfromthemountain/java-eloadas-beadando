@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.beadndo.OlvasController">
+   <children>
+      <TableView fx:id="olvas_tablazat" layoutX="27.0" layoutY="23.0" prefHeight="562.0" prefWidth="953.0">
+        <columns>
+          <TableColumn fx:id="azonosito_column" prefWidth="75.0" text="Rendelés az" />
+          <TableColumn fx:id="pizza_nev_column" prefWidth="150.0" text="Pizza név" />
+            <TableColumn fx:id="mennyiseg_column" prefWidth="75.0" text="Darab" />
+            <TableColumn fx:id="felvetel_column" prefWidth="100.0" text="Felvétel" />
+            <TableColumn fx:id="kiszallitas_column" prefWidth="100.0" text="Kiszállítás" />
+            <TableColumn fx:id="kategoria_column" prefWidth="112.0" text="Pizza Kategoria" />
+            <TableColumn fx:id="vega_column" prefWidth="58.0" text="Vega" />
+            <TableColumn fx:id="ar_column" prefWidth="93.0" text="Ár" />
+        </columns>
+      </TableView>
+      <Label fx:id="isConnected" layoutX="35.0" layoutY="6.0" text="Label" />
+   </children>
+</AnchorPane>
