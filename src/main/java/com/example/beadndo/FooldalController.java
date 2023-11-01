@@ -107,7 +107,7 @@ public class FooldalController implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("modosit-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 300, 300);
+            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
             Stage stage = new Stage();
             stage.setTitle("Rendelés módosítás");
             stage.setScene(scene);
