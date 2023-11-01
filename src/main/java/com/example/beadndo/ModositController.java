@@ -48,6 +48,8 @@ public class ModositController implements Initializable {
     public Button vissza_button;
     @FXML
     private Label isConnected;
+    @FXML
+    public Button putapi_button;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

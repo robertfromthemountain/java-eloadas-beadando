@@ -35,6 +35,8 @@ public class IrController implements Initializable {
     public Button vissza_button;
     @FXML
     private Label isConnected;
+    @FXML
+    public Button postapi_button;
 
     public void beszuras_click(ActionEvent event) {
         String query = "insert into pizza values (\"" + pizza_nev_textField.getText() + "\",\"" + kategoria_nev_textField.getText() + "\"," + vega_Button.isSelected() + ")";

@@ -34,6 +34,8 @@ public class TorolController implements Initializable {
     public Button vissza_button;
     @FXML
     private Label isConnected;
+    @FXML
+    public Button deleteapi_button;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
