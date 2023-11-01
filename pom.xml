@@ -47,6 +47,17 @@
       <artifactId>jetty-io</artifactId>
       <version>9.4.46.v20220331</version>
     </dependency>
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-maven-plugin</artifactId>
+      <version>2.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.metro</groupId>
+      <artifactId>webservices-rt</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -58,6 +69,27 @@
         <configuration>
           <source>17</source>
           <target>17</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxws-maven-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <wsdlUrls>
+            <wsdlUrl>http://www.mnb.hu/arfolyamok.asmx?wsdl</wsdlUrl>
+          </wsdlUrls>
+          <packageName>csomag1</packageName>
+          <sourceDestDir>
+            D:\Egyetem\5. Félév\Java\java-eloadas-beadando\src\main\java
+          </sourceDestDir>
         </configuration>
       </plugin>
       <plugin>
@@ -82,4 +114,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>

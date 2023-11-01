@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.beadndo.IrController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.beadndo.IrController">
    <children>
       <VBox layoutX="25.0" layoutY="20.0" prefHeight="104.0" prefWidth="139.0" spacing="19.0">
          <children>
@@ -31,6 +31,5 @@
       <Button fx:id="beszuras_Button" layoutX="374.0" layoutY="87.0" mnemonicParsing="false" onAction="#beszuras_click" prefHeight="25.0" prefWidth="101.0" text="Beszúrás" />
       <Button fx:id="vissza_button" layoutX="25.0" layoutY="126.0" mnemonicParsing="false" onAction="#vissza_click" prefHeight="25.0" prefWidth="72.0" text="Vissza" />
       <Label fx:id="isConnected" layoutX="346.0" layoutY="130.0" />
-      <Button fx:id="postapi_button" layoutX="106.0" layoutY="125.0" mnemonicParsing="false" onAction="#postapi_click" prefHeight="43.0" prefWidth="72.0" text="Restful Post" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>
