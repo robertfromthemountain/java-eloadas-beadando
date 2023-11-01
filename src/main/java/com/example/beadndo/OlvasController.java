@@ -16,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -24,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.example.beadndo.SqliteConnection.Connector;
+import static com.example.beadndo.netPizzaApplication.GET;
 
 public class OlvasController implements Initializable {
     @FXML
@@ -115,4 +117,12 @@ public class OlvasController implements Initializable {
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
+    public void getapi_click(ActionEvent event) throws IOException {
+        String ID="3399";
+        GET(ID);
+
+    }
+
+
+
 }

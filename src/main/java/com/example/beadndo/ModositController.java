@@ -26,6 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.example.beadndo.SqliteConnection.Connector;
+import static com.example.beadndo.netPizzaApplication.GET;
+import static com.example.beadndo.netPizzaApplication.PUT;
 
 public class ModositController implements Initializable {
     public ConnectionModel connectionModel = new ConnectionModel();
@@ -112,5 +114,11 @@ public class ModositController implements Initializable {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
+    }
+    public void putapi_click(ActionEvent event) throws IOException {
+        String ID="3399";
+        PUT(ID,"Horváth János2", "male", "email3_example_gamf@data.hu","active");
+        GET(ID);
+
     }
 }

@@ -22,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.example.beadndo.SqliteConnection.Connector;
+import static com.example.beadndo.netPizzaApplication.*;
 
 public class TorolController implements Initializable {
     public ConnectionModel connectionModel = new ConnectionModel();
@@ -100,5 +101,11 @@ public class TorolController implements Initializable {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
+    }
+    public void deleteapi_click(ActionEvent event) throws IOException {
+        String ID="3399";
+        DELETE(ID);
+        GET(ID);
+
     }
 }

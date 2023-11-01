@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 
 
 import static com.example.beadndo.SqliteConnection.Connector;
+import static com.example.beadndo.netPizzaApplication.*;
 
 public class IrController implements Initializable {
     public ConnectionModel connectionModel = new ConnectionModel();
@@ -76,5 +77,9 @@ public class IrController implements Initializable {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
+    }
+    public void postapi_click(ActionEvent event) throws IOException {
+        POST("Horváth János", "male", "kalpat_example@data.hu","active");
+
     }
 }
