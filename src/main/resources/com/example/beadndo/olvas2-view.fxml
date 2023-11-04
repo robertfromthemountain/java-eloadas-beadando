@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.beadndo.Olvas2Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.beadndo.Olvas2Controller">
    <children>
       <VBox layoutX="25.0" layoutY="26.0" prefHeight="392.0" prefWidth="139.0" spacing="19.0">
          <children>
@@ -71,5 +71,6 @@
       </VBox>
       <Button fx:id="keres_Button" layoutX="288.0" layoutY="26.0" mnemonicParsing="false" onAction="#handledButtonAction" text="Keresés" />
       <Button fx:id="vissza_button" layoutX="287.0" layoutY="61.0" mnemonicParsing="false" onAction="#vissza_click" prefHeight="25.0" prefWidth="57.0" text="Vissza" />
+      <Button fx:id="getapi_button" layoutX="288.0" layoutY="97.0" mnemonicParsing="false" onAction="#getapi_click" text="Get API" />
    </children>
 </AnchorPane>

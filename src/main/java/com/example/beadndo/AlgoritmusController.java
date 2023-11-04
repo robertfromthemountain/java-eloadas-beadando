@@ -1,27 +1,24 @@
 package com.example.beadndo;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LetoltesController {
-    @FXML
-    public Button vissza_button;
-    @FXML
-    public Button letoltes_Button;
-
+public class AlgoritmusController {
     public void vissza_click(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("fooldal-view.fxml"));
+            /*
+             * if "fx:controller" is not set in fxml
+             * fxmlLoader.setController(NewWindowController);
+             */
             Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
             Stage stage = new Stage();
             stage.setTitle("Netpizza");
@@ -34,7 +31,4 @@ public class LetoltesController {
         }
     }
 
-    public void letoltes_click(ActionEvent event) {
-
-    }
 }

@@ -5,18 +5,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.beadndo.FooldalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.beadndo.FooldalController">
    <children>
       <VBox layoutX="21.0" layoutY="39.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
          <children>
-            <Label text="Feladat1:" />
-            <Button fx:id="olvas_button" mnemonicParsing="false" onAction="#olvas_click" text="Olvas" />
-            <Button fx:id="olvas2_button" mnemonicParsing="false" onAction="#olvas2_click" text="Olvas2" />
-            <Button fx:id="ir_button" mnemonicParsing="false" onAction="#ir_click" text="Ír" />
-            <Button fx:id="modosit_button" mnemonicParsing="false" onAction="#modosit_click" text="Módosít" />
-            <Button fx:id="torol_button" mnemonicParsing="false" onAction="#torol_click" text="Töröl" />
+            <Label text="CRUD:" />
+            <Button fx:id="olvas_button" mnemonicParsing="false" onAction="#olvas_click" prefWidth="95.0" text="Olvas" />
+            <Button fx:id="olvas2_button" mnemonicParsing="false" onAction="#olvas2_click" prefWidth="95.0" text="Olvas2" />
+            <Button fx:id="ir_button" mnemonicParsing="false" onAction="#ir_click" prefWidth="95.0" text="Ír" />
+            <Button fx:id="modosit_button" mnemonicParsing="false" onAction="#modosit_click" prefWidth="95.0" text="Módosít" />
+            <Button fx:id="torol_button" mnemonicParsing="false" onAction="#torol_click" prefWidth="95.0" text="Töröl" />
          </children>
       </VBox>
-      <Label fx:id="isConnected" layoutX="227.0" layoutY="103.0" text="Label" />
+      <VBox layoutX="155.0" layoutY="39.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+         <children>
+            <Label text="SOAP:" />
+            <Button fx:id="letoltes_button" mnemonicParsing="false" onAction="#letoltes_click" prefWidth="95.0" text="Letöltés" />
+            <Button fx:id="letoltes2_button" mnemonicParsing="false" onAction="#letoltes2_click" prefWidth="95.0" text="Letöltés2" />
+            <Button fx:id="grafikon_button" mnemonicParsing="false" onAction="#grafikon_click" prefWidth="95.0" text="Grafikon" />
+         </children>
+      </VBox>
+      <VBox layoutX="300.0" layoutY="39.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+         <children>
+            <Label text="Adatbányászat:" />
+            <Button fx:id="fa_button" mnemonicParsing="false" onAction="#fa_click" prefWidth="95.0" text="Döntési fa" />
+            <Button fx:id="algoritmus_button" mnemonicParsing="false" onAction="#algoritmus_click" prefWidth="95.0" text="Algoritmusok" />
+            <Button fx:id="algoritmus2_button" mnemonicParsing="false" onAction="#algoritmus2_click" prefWidth="95.0" text="Algoritmusok2" />
+         </children>
+      </VBox>
+      <VBox layoutX="448.0" layoutY="39.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+         <children>
+            <Label text="Párhuzamos:" />
+            <Button fx:id="parhuzamos_button" mnemonicParsing="false" onAction="#parhuzamos_click" prefWidth="95.0" text="Párhuzamos" />
+            <Button fx:id="stream_button" mnemonicParsing="false" onAction="#stream_click" prefWidth="95.0" text="Stream" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

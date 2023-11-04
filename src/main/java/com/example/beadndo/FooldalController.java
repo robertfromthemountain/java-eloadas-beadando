@@ -17,11 +17,10 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class FooldalController implements Initializable {
     public ConnectionModel connectionModel = new ConnectionModel();
 
-    @FXML
-    private Label isConnected;
     @FXML
     public Button olvas_button;
     @FXML
@@ -32,6 +31,17 @@ public class FooldalController implements Initializable {
     public Button modosit_button;
     @FXML
     public Button torol_button;
+    @FXML
+    public Button letoltes_button;
+    @FXML
+    public Button letoltes2_button;
+    @FXML
+    public Button grafikon_button;
+    public Button fa_button;
+    public Button algoritmus_button;
+    public Button algoritmus2_button;
+    public Button parhuzamos_button;
+    public Button stream_button;
 
 
     public void olvas_click(ActionEvent event) {
@@ -122,10 +132,72 @@ public class FooldalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (connectionModel.isDbConnected()) {
-            isConnected.setText("Sikerült kapcsolódni az adatbázishoz");
+
         } else {
-            isConnected.setText("Nem sikerült kapcsolódni");
+
         }
     }
 
+    public void letoltes_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("letoltes-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+            Stage stage = new Stage();
+            stage.setTitle("MNB Letöltés");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
+
+    public void letoltes2_click(ActionEvent event) {
+        try {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("letoltes2-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+        Stage stage = new Stage();
+        stage.setTitle("MNB Letöltés2");
+        stage.setScene(scene);
+        stage.show();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
+    } catch (IOException e) {
+        Logger logger = Logger.getLogger(getClass().getName());
+        logger.log(Level.SEVERE, "Failed to create new Window.", e);
+    }
+    }
+
+    public void grafikon_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("grafikon-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+            Stage stage = new Stage();
+            stage.setTitle("MNB Grafikon");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
+
+    public void fa_click(ActionEvent event) {
+    }
+
+    public void algoritmus_click(ActionEvent event) {
+    }
+
+    public void algoritmus2_click(ActionEvent event) {
+    }
+
+    public void parhuzamos_click(ActionEvent event) {
+    }
+
+    public void stream_click(ActionEvent event) {
+    }
 }
