@@ -22,7 +22,7 @@ public class LetoltesController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("fooldal-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 750, 350);
             Stage stage = new Stage();
             stage.setTitle("Netpizza");
             stage.setScene(scene);

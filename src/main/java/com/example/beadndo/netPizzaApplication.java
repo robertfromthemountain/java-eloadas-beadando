@@ -16,7 +16,7 @@ public class netPizzaApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(netPizzaApplication.class.getResource("fooldal-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 750, 350);
         stage.setTitle("Pizzanet");
         stage.setScene(scene);
         stage.show();

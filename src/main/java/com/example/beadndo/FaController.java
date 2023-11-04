@@ -18,7 +18,7 @@ public class FaController { public void vissza_click(ActionEvent event) {
          * if "fx:controller" is not set in fxml
          * fxmlLoader.setController(NewWindowController);
          */
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 750, 350);
         Stage stage = new Stage();
         stage.setTitle("Netpizza");
         stage.setScene(scene);
