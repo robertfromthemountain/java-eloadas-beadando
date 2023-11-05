@@ -42,6 +42,11 @@ public class FooldalController implements Initializable {
     public Button algoritmus2_button;
     public Button parhuzamos_button;
     public Button stream_button;
+    public Button info_button;
+    public Button arak_button;
+    public Button tortenet_button;
+    public Button nyitas_button;
+    public Button zaras_button;
 
 
     public void olvas_click(ActionEvent event) {
@@ -199,5 +204,46 @@ public class FooldalController implements Initializable {
     }
 
     public void stream_click(ActionEvent event) {
+    }
+
+    public void info_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("szamlainfo-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+            Stage stage = new Stage();
+            stage.setTitle("Számla információk");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
+
+    public void arak_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("aktualis-arak-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+            Stage stage = new Stage();
+            stage.setTitle("Aktuális deviza árak");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
+
+    public void tortenet_click(ActionEvent event) {
+    }
+
+    public void nyitas_click(ActionEvent event) {
+    }
+
+    public void zaras_click(ActionEvent event) {
     }
 }

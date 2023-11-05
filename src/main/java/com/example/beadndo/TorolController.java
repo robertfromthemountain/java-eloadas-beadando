@@ -32,6 +32,7 @@ public class TorolController implements Initializable {
     public ChoiceBox azonosito_choiceBox;
     @FXML
     public Button vissza_button;
+
     @FXML
     private Label isConnected;
     @FXML

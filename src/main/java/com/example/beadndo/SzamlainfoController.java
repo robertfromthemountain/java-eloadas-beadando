@@ -3,6 +3,11 @@ package com.example.beadndo;
 import com.oanda.v20.Context;
 import com.oanda.v20.account.AccountID;
 import com.oanda.v20.account.AccountSummary;
+import com.oanda.v20.primitives.AccountUnits;
+import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.transaction.TradeOpen;
+import com.oanda.v20.transaction.TransactionID;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,23 +38,23 @@ public class SzamlainfoController implements Initializable {
 
 
     @FXML
-    public TableColumn id_column;
+    public TableColumn<szamlainfo, AccountID> id_column;
     @FXML
-    public TableColumn alias_column;
+    public TableColumn<szamlainfo, String> alias_column;
     @FXML
-    public TableColumn currency_column;
+    public TableColumn<szamlainfo, Currency> currency_column;
     @FXML
-    public TableColumn balance_column;
+    public TableColumn<szamlainfo, AccountUnits> balance_column;
     @FXML
-    public TableColumn created_column;
+    public TableColumn<szamlainfo, Long> created_column;
     @FXML
-    public TableColumn created_time_column;
+    public TableColumn<szamlainfo, DateTime> created_time_column;
     @FXML
-    public TableColumn open_trade_column;
+    public TableColumn<szamlainfo, Long> open_trade_column;
     @FXML
-    public TableColumn last_trans_column;
+    public TableColumn<szamlainfo, TransactionID> last_trans_column;
     @FXML
-    public TableView szamlainfo_tablazat;
+    public TableView<szamlainfo> szamlainfo_tablazat;
 
     public void vissza_click(ActionEvent event) {
     try {
@@ -73,17 +79,17 @@ public class SzamlainfoController implements Initializable {
         try {
             AccountSummary summary = ctx.account.summary(new AccountID("101-004-27326966-001")).getAccount();
             System.out.println(summary);
-            ObservableList <szamlainfo> account = Arrays.asList(summary.getId(), summary.getAlias(), summary.getCurrency(), summary.getBalance(), summary.getCreatedByUserID(), summary.getCreatedTime(), summary.getOpenTradeCount(), summary.getLastTransactionID());
-            /*account[0].id = summary.getId();
+            szamlainfo account = null;
+            account.id = summary.getId();
             account.alias = summary.getAlias();
             account.balance = summary.getBalance();
             account.createdByUserId = summary.getCreatedByUserID();
             account.currency = summary.getCurrency();
             account.createdTime = summary.getCreatedTime();
             account.lastTransactionID = summary.getLastTransactionID();
-            account.openTradeCount = summary.getOpenTradeCount();*/
+            account.openTradeCount = summary.getOpenTradeCount();
 
-            id_column.setCellValueFactory(new PropertyValueFactory<osszesites, Integer>("az"));
+            szamlainfo_tablazat.getItems().add(new szamlainfo(account.id, account.alias, account.currency, account.balance, account.createdByUserId, account.createdTime, account.openTradeCount, account.lastTransactionID));
 
 
         } catch (Exception e) {
