@@ -7,7 +7,7 @@ import com.oanda.v20.primitives.DateTime;
 import com.oanda.v20.transaction.TransactionID;
 
 public class szamlainfo {
-    public szamlainfo(AccountID id, String alias, Currency currency, AccountUnits balance, Long createdByUserId, DateTime createdTime, Long openTradeCount, TransactionID lastTransactionID) {
+    public szamlainfo(AccountID id, String alias, AccountUnits balance, Long createdByUserId, Currency currency, DateTime createdTime, TransactionID lastTransactionID, Long openTradeCount) {
         this.id = id;
         this.alias = alias;
         this.currency = currency;

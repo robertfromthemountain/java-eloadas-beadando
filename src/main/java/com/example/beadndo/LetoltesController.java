@@ -1,11 +1,14 @@
 package com.example.beadndo;
 
+import csomag1.MNBArfolyamServiceSoap;
+import csomag1.MNBArfolyamServiceSoapImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +20,8 @@ public class LetoltesController {
     public Button vissza_button;
     @FXML
     public Button letoltes_Button;
+    @FXML
+    public Label isConnected;
 
     public void vissza_click(ActionEvent event) {
         try {
@@ -35,6 +40,17 @@ public class LetoltesController {
     }
 
     public void letoltes_click(ActionEvent event) {
+        MNBArfolyamServiceSoapImpl impl = new MNBArfolyamServiceSoapImpl();
+        MNBArfolyamServiceSoap service = impl.getCustomBindingMNBArfolyamServiceSoap();
+        try {
+            isConnected.setText(service.getInfo());
+            //System.out.println(service.getInfo());
+            //System.out.println(service.getCurrentExchangeRates());
+            //System.out.println(service.getExchangeRates("2022-08-14","2022-09-14","EUR"));
+        } catch (Exception e) {
+            System.err.print(e);
+        }
+
 
     }
 }

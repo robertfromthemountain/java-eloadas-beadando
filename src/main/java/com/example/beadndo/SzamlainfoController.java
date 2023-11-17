@@ -5,33 +5,25 @@ import com.oanda.v20.account.AccountID;
 import com.oanda.v20.account.AccountSummary;
 import com.oanda.v20.primitives.AccountUnits;
 import com.oanda.v20.primitives.DateTime;
-import com.oanda.v20.transaction.TradeOpen;
 import com.oanda.v20.transaction.TransactionID;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static com.example.beadndo.SqliteConnection.Connector;
 
 
 public class SzamlainfoController implements Initializable {
@@ -56,6 +48,9 @@ public class SzamlainfoController implements Initializable {
     @FXML
     public TableView<szamlainfo> szamlainfo_tablazat;
 
+    @FXML
+    public Button vissza_button;
+
     public void vissza_click(ActionEvent event) {
     try {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -78,20 +73,18 @@ public class SzamlainfoController implements Initializable {
         Context ctx = new Context("https://api-fxpractice.oanda.com","de7895a23b01d7cc4c8896d1139e706b-2daacfbab11b921a924b461a8e2a7438");
         try {
             AccountSummary summary = ctx.account.summary(new AccountID("101-004-27326966-001")).getAccount();
-            System.out.println(summary);
-            szamlainfo account = null;
-            account.id = summary.getId();
-            account.alias = summary.getAlias();
-            account.balance = summary.getBalance();
-            account.createdByUserId = summary.getCreatedByUserID();
-            account.currency = summary.getCurrency();
-            account.createdTime = summary.getCreatedTime();
-            account.lastTransactionID = summary.getLastTransactionID();
-            account.openTradeCount = summary.getOpenTradeCount();
+            szamlainfo account = new szamlainfo(summary.getId(), summary.getAlias(), summary.getBalance(), summary.getCreatedByUserID(), summary.getCurrency(), summary.getCreatedTime(), summary.getLastTransactionID(), summary.getOpenTradeCount());
 
-            szamlainfo_tablazat.getItems().add(new szamlainfo(account.id, account.alias, account.currency, account.balance, account.createdByUserId, account.createdTime, account.openTradeCount, account.lastTransactionID));
+            id_column.setCellValueFactory(new PropertyValueFactory<>("id"));
+            alias_column.setCellValueFactory(new PropertyValueFactory<>("alias"));
+            currency_column.setCellValueFactory(new PropertyValueFactory<>("currency"));
+            balance_column.setCellValueFactory(new PropertyValueFactory<>("balance"));
+            created_column.setCellValueFactory(new PropertyValueFactory<>("createdByUserId"));
+            created_time_column.setCellValueFactory(new PropertyValueFactory<>("createdTime"));
+            open_trade_column.setCellValueFactory(new PropertyValueFactory<>("openTradeCount"));
+            last_trans_column.setCellValueFactory(new PropertyValueFactory<>("lastTransactionID"));
 
-
+            szamlainfo_tablazat.getItems().addAll(account);
         } catch (Exception e) {
             e.printStackTrace();
         }

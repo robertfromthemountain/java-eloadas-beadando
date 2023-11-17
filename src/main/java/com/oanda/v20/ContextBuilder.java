@@ -4,7 +4,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import com.oanda.v20.primitives.AcceptDatetimeFormat;
-import com.oanda.v20.Context;
 
 /**
  * Builder class for Context objects

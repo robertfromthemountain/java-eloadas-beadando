@@ -11,7 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<junit.version>5.9.2</junit.version>  </properties>
+    <junit.version>5.9.2</junit.version>  </properties>
 
   <dependencies>
     <dependency>
@@ -25,7 +25,7 @@
       <version>17.0.6</version>
     </dependency>
 
-<dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>${junit.version}</version>
@@ -37,11 +37,11 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>org.jsoup</groupId>
-          <artifactId>jsoup</artifactId>
-          <version>1.10.2</version>
-      </dependency>
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.10.2</version>
+    </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-io</artifactId>
@@ -57,11 +57,83 @@
       <artifactId>webservices-rt</artifactId>
       <version>2.3.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-maven-plugin</artifactId>
+      <version>2.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.metro</groupId>
+      <artifactId>webservices-rt</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+
 
   </dependencies>
 
+
+  <licenses>
+    <license>
+      <name>The MIT License (MIT)</name>
+      <url>https://github.com/oanda/v20-java/blob/master/LICENSE.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>oanda-api</id>
+      <name>OANDA API</name>
+      <email>oanda-api@oanda.com</email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>https://github.com/oanda/v20-java.git</connection>
+    <developerConnection>https://github.com/oanda/v20-java.git</developerConnection>
+    <tag>3.0.25</tag>
+    <url>https://github.com/oanda/v20-java</url>
+  </scm>
+
   <build>
     <plugins>
+
+      <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>jaxws-maven-plugin</artifactId>
+      <version>2.6</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>wsimport</goal>
+          </goals>
+        </execution>
+      </executions>
+        <configuration>
+          <wsdlUrls>
+            <wsdlUrl>http://www.mnb.hu/arfolyamok.asmx?wsdl</wsdlUrl>
+          </wsdlUrls>
+          <packageName>csomag1</packageName>
+          <sourceDestDir>
+            c:\Java-SOAP-MNB\Java-SOAP-MNB\src\main\java\
+          </sourceDestDir>
+        </configuration>
+      </plugin>
+
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -111,6 +183,17 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.8</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>false</autoReleaseAfterClose>
+        </configuration>
       </plugin>
     </plugins>
   </build>
