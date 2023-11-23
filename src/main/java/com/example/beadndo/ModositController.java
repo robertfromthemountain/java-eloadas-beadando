@@ -47,26 +47,26 @@ public class ModositController implements Initializable {
     @FXML
     public Button vissza_button;
     @FXML
-    private Label isConnected;
-    @FXML
     public Button putapi_button;
+    @FXML
+    private Label isConnected;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(connectionModel.isDbConnected())
-        {
+        if (connectionModel.isDbConnected()) {
 
             getOsszAzonosito();
-        }
-        else{
+        } else {
 
         }
     }
+
     public void modosit_click(ActionEvent event) {
         String query = "update rendeles set pizzanev = '" + pizza_nev_textField.getText() + "', darab = '" + mennyiseg_textField.getText() + "', felvetel = '" + felvetel_textField.getText() + "', kiszallitas = '" + kiszallitas_textField.getText() + "'" + " Where az = " + (int) azonosito_choiceBox.getValue();
         executeQuery(query);
         isConnected.setText("Rendelés módosítás sikeres");
     }
+
     private void executeQuery(String query) {
         Connection connection = Connector();
         Statement st;
@@ -77,8 +77,8 @@ public class ModositController implements Initializable {
             e.printStackTrace();
         }
     }
-    public ArrayList<Integer> getOsszAzonosito()
-    {
+
+    public ArrayList<Integer> getOsszAzonosito() {
         ArrayList<Integer> osszAzLista = new ArrayList<>();
         Connection connection = Connector();
         String query = "select az from rendeles";
@@ -88,12 +88,11 @@ public class ModositController implements Initializable {
             st = connection.createStatement();
             rs = st.executeQuery(query);
             int azonositok;
-            while(rs.next())
-            {
+            while (rs.next()) {
                 azonositok = rs.getInt("az");
                 osszAzLista.add(azonositok);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         for (int var : osszAzLista) {
@@ -111,15 +110,16 @@ public class ModositController implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
+
     public void putapi_click(ActionEvent event) throws IOException {
-        String ID="3399";
-        PUT(ID,"Horváth János2", "male", "email3_example_gamf@data.hu","active");
+        String ID = "3399";
+        PUT(ID, "Horváth János2", "male", "email3_example_gamf@data.hu", "active");
         GET(ID);
 
     }

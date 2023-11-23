@@ -32,22 +32,35 @@ public class FooldalController implements Initializable {
     @FXML
     public Button torol_button;
     @FXML
-    public Button letoltes_button;
-    @FXML
-    public Button letoltes2_button;
-    @FXML
-    public Button grafikon_button;
     public Button fa_button;
+    @FXML
     public Button algoritmus_button;
+    @FXML
     public Button algoritmus2_button;
+    @FXML
     public Button parhuzamos_button;
+    @FXML
     public Button stream_button;
+    @FXML
     public Button info_button;
+    @FXML
     public Button arak_button;
+    @FXML
     public Button tortenet_button;
+    @FXML
     public Button nyitas_button;
+    @FXML
     public Button zaras_button;
+    public Button nyitott_button;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (connectionModel.isDbConnected()) {
+
+        } else {
+
+        }
+    }
 
     public void olvas_click(ActionEvent event) {
         try {
@@ -58,13 +71,12 @@ public class FooldalController implements Initializable {
             stage.setTitle("Olvas");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
-
 
     @FXML
     public void olvas2_click(ActionEvent event) {
@@ -76,7 +88,7 @@ public class FooldalController implements Initializable {
             stage.setTitle("Olvas2");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -93,7 +105,7 @@ public class FooldalController implements Initializable {
             stage.setTitle("Rendelés törlés");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -110,7 +122,7 @@ public class FooldalController implements Initializable {
             stage.setTitle("Pizza beszúrás");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -127,64 +139,7 @@ public class FooldalController implements Initializable {
             stage.setTitle("Rendelés módosítás");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
-        }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (connectionModel.isDbConnected()) {
-
-        } else {
-
-        }
-    }
-
-    public void letoltes_click(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("letoltes-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
-            Stage stage = new Stage();
-            stage.setTitle("MNB Letöltés");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
-        }
-    }
-
-    public void letoltes2_click(ActionEvent event) {
-        try {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("letoltes2-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 300, 350);
-        Stage stage = new Stage();
-        stage.setTitle("MNB Letöltés2");
-        stage.setScene(scene);
-        stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-    } catch (IOException e) {
-        Logger logger = Logger.getLogger(getClass().getName());
-        logger.log(Level.SEVERE, "Failed to create new Window.", e);
-    }
-    }
-
-    public void grafikon_click(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("grafikon-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
-            Stage stage = new Stage();
-            stage.setTitle("MNB Grafikon");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -192,30 +147,95 @@ public class FooldalController implements Initializable {
     }
 
     public void fa_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("fa-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 200);
+            Stage stage = new Stage();
+            stage.setTitle("Adatbányászat - Fa");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 
     public void algoritmus_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("algoritmus-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 200);
+            Stage stage = new Stage();
+            stage.setTitle("Adatbányászat - Algoritmus");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 
     public void algoritmus2_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("algoritmus2-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 400);
+            Stage stage = new Stage();
+            stage.setTitle("Adatbányászat - Algoritmus2");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 
     public void parhuzamos_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("parhuzamos-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 200);
+            Stage stage = new Stage();
+            stage.setTitle("Párhuzamos");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 
     public void stream_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("stream-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Stage stage = new Stage();
+            stage.setTitle("Stream");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 
     public void info_click(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("szamlainfo-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 150);
             Stage stage = new Stage();
             stage.setTitle("Számla információk");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -226,12 +246,12 @@ public class FooldalController implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("aktualis-arak-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 200);
             Stage stage = new Stage();
             stage.setTitle("Aktuális deviza árak");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -239,11 +259,66 @@ public class FooldalController implements Initializable {
     }
 
     public void tortenet_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("historikus-arak-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 200);
+            Stage stage = new Stage();
+            stage.setTitle("Historikus deviza árak");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 
     public void nyitas_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("nyitas-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 250);
+            Stage stage = new Stage();
+            stage.setTitle("Pozíció Nyitás");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 
     public void zaras_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("zaras-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 350);
+            Stage stage = new Stage();
+            stage.setTitle("Pozíció Zárás");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
+
+    public void nyitott_click(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("nyitott-poziciok-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 250);
+            Stage stage = new Stage();
+            stage.setTitle("Nyitott Pozíciók");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 }

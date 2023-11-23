@@ -144,7 +144,7 @@ public class Olvas2Controller implements Initializable {
         return osszadatLista;
     }
 
-    public void showAdat(){
+    public void showAdat() {
         ObservableList<osszesites> list = getOsszAdat();
 
         azonosito_column.setCellValueFactory(new PropertyValueFactory<osszesites, Integer>("az"));
@@ -168,15 +168,15 @@ public class Olvas2Controller implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
-    public void getapi_click(ActionEvent event) throws IOException {
-        String ID="3399";
-        GET(ID);
 
+    public void getapi_click(ActionEvent event) throws IOException {
+        String ID = "3399";
+        GET(ID);
     }
 }

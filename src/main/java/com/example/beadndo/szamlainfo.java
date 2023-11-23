@@ -7,6 +7,15 @@ import com.oanda.v20.primitives.DateTime;
 import com.oanda.v20.transaction.TransactionID;
 
 public class szamlainfo {
+    public AccountID id;
+    public String alias;
+    public Currency currency;
+    public AccountUnits balance;
+    public Long createdByUserId;
+    public DateTime createdTime;
+    public Long openTradeCount;
+    public TransactionID lastTransactionID;
+
     public szamlainfo(AccountID id, String alias, AccountUnits balance, Long createdByUserId, Currency currency, DateTime createdTime, TransactionID lastTransactionID, Long openTradeCount) {
         this.id = id;
         this.alias = alias;
@@ -49,14 +58,5 @@ public class szamlainfo {
     public TransactionID getLastTransactionID() {
         return lastTransactionID;
     }
-
-    public AccountID id;
-    public String alias;
-    public Currency currency;
-    public AccountUnits balance;
-    public Long createdByUserId;
-    public DateTime createdTime;
-    public Long openTradeCount;
-    public TransactionID lastTransactionID;
 
 }

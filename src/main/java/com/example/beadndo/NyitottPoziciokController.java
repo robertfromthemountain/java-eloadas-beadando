@@ -27,22 +27,33 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class NyitottPoziciokController implements Initializable {
+    static Context ctx;
+    static AccountID accountId;
     @FXML
     public Button mutat_button;
     @FXML
     public Label arfolyam_label;
     @FXML
     public Button vissza_button;
-    @FXML
-    public ChoiceBox<String> devizaParok_choiceBox;
-    @FXML
-    public Label legutobbi_label;
-    static Context ctx;
-    static AccountID accountId;
-
 
     public void mutat_click(ActionEvent event) {
+        try {
+            ctx = new ContextBuilder(Config.URL).setToken(Config.TOKEN).setApplication("StepByStepOrder").build();
+            accountId = Config.ACCOUNTID;
+            if (true) NyitotttradekKiír();
+            arfolyam_label.setText(arfolyam_label.getText() + "\n" + "Done");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    void NyitotttradekKiír() throws ExecuteException, RequestException {
+        arfolyam_label.setText(arfolyam_label.getText() + "\n" + "Nyitott tradek:");
+        List<Trade> trades = ctx.trade.listOpen(accountId).getTrades();
+        for (Trade trade : trades)
+            arfolyam_label.setText(arfolyam_label.getText() + "\n" + trade.toString());
+        for (Trade trade : trades)
+            arfolyam_label.setText(arfolyam_label.getText() + "\n" + trade.getId() + "\t" + trade.getInstrument() + "\t" + trade.getOpenTime() + "\t" + trade.getCurrentUnits() + "\t" + trade.getPrice() + "\t" + trade.getUnrealizedPL());
     }
 
     public void vissza_click(ActionEvent event) {
@@ -54,7 +65,7 @@ public class NyitottPoziciokController implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -63,22 +74,6 @@ public class NyitottPoziciokController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ctx = new ContextBuilder(Config.URL).setToken(Config.TOKEN).setApplication("StepByStepOrder").build();
-        accountId = Config.ACCOUNTID;
-        InstrumentName instrument = new InstrumentName("NZD_USD");
-        //System.out.println("Nyitott tradek:");
-        List<Trade> trades = null;
-        try {
-            trades = ctx.trade.listOpen(accountId).getTrades();
-        } catch (RequestException e) {
-            throw new RuntimeException(e);
-        } catch (ExecuteException e) {
-            throw new RuntimeException(e);
-        }
-        for(Trade trade: trades)
-            System.out.println(trade);
-        for(Trade trade: trades)
-            System.out.println(trade.getId()+"\t"+trade.getInstrument()+"\t"+trade.getOpenTime()+"\t"+trade.getCurrentUnits()+"\t"+trade.getPrice()+"\t"+trade.getUnrealizedPL());
     }
 
 }

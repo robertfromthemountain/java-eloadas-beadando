@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,21 +41,35 @@ public class HistorikusArakController implements Initializable {
 
     public void mutat_click(ActionEvent event) {
         Context ctx = new ContextBuilder(Config.URL).setToken(Config.TOKEN).setApplication("HistorikusAdatok").build();
-        if(devizaParok_choiceBox.getValue().equals("EUR - USD")) {
-            try {
-                InstrumentCandlesRequest request = new InstrumentCandlesRequest(new InstrumentName("EUR_USD"));
-                request.setGranularity(H1);
-                request.setCount(10L);    // 10 adat	L: long adattípus
-                InstrumentCandlesResponse resp = ctx.instrument.candles(request);
-                for (Candlestick candle : resp.getCandles())
-                    legutobbi_label.setText(String.valueOf(candle));
-                for (Candlestick candle : resp.getCandles())
-                    arfolyam_label.setText(candle.getTime() + "\t" + candle.getMid().getC());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        String instruments = "valami";
+        if (Objects.equals(devizaParok_choiceBox.getValue(), "EUR - USD")) {
+            instruments = "EUR_USD";
         }
-        if(devizaParok_choiceBox.getValue().equals("USD - JPY")) {
+        if (Objects.equals(devizaParok_choiceBox.getValue(), "USD - JPY")) {
+            instruments = "USD_JPY";
+
+        }
+        if (Objects.equals(devizaParok_choiceBox.getValue(), "GBP - USD")) {
+            instruments = "GBP_USD";
+
+        }
+        if (Objects.equals(devizaParok_choiceBox.getValue(), "USD - CHF")) {
+            instruments = "USD_CHF";
+        }
+        try {
+            InstrumentCandlesRequest request = new InstrumentCandlesRequest(new InstrumentName(instruments));
+            request.setGranularity(H1);
+            request.setCount(10L);    // 10 adat	L: long adattípus
+            InstrumentCandlesResponse resp = ctx.instrument.candles(request);
+            for (Candlestick candle : resp.getCandles())
+                legutobbi_label.setText(String.valueOf(candle));
+            for (Candlestick candle : resp.getCandles())
+                arfolyam_label.setText(candle.getTime() + "\t" + candle.getMid().getC());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        /*if(devizaParok_choiceBox.getValue().equals("USD - JPY")) {
             try {
                 InstrumentCandlesRequest request = new InstrumentCandlesRequest(new InstrumentName("USD_JPY"));
                 request.setGranularity(H1);
@@ -82,7 +97,7 @@ public class HistorikusArakController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-        if(devizaParok_choiceBox.getValue().equals("USD -CHF")) {
+        if(devizaParok_choiceBox.getValue().equals("USD - CHF")) {
             try {
                 InstrumentCandlesRequest request = new InstrumentCandlesRequest(new InstrumentName("USD_CHF"));
                 request.setGranularity(H1);
@@ -128,7 +143,7 @@ public class HistorikusArakController implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);

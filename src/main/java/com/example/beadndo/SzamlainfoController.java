@@ -52,25 +52,25 @@ public class SzamlainfoController implements Initializable {
     public Button vissza_button;
 
     public void vissza_click(ActionEvent event) {
-    try {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("fooldal-view.fxml"));
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("fooldal-view.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 750, 350);
-        Stage stage = new Stage();
-        stage.setTitle("Netpizza");
-        stage.setScene(scene);
-        stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-    } catch (IOException e) {
-        Logger logger = Logger.getLogger(getClass().getName());
-        logger.log(Level.SEVERE, "Failed to create new Window.", e);
+            Scene scene = new Scene(fxmlLoader.load(), 750, 350);
+            Stage stage = new Stage();
+            stage.setTitle("Netpizza");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
-}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Context ctx = new Context("https://api-fxpractice.oanda.com","de7895a23b01d7cc4c8896d1139e706b-2daacfbab11b921a924b461a8e2a7438");
+        Context ctx = new Context("https://api-fxpractice.oanda.com", "de7895a23b01d7cc4c8896d1139e706b-2daacfbab11b921a924b461a8e2a7438");
         try {
             AccountSummary summary = ctx.account.summary(new AccountID("101-004-27326966-001")).getAccount();
             szamlainfo account = new szamlainfo(summary.getId(), summary.getAlias(), summary.getBalance(), summary.getCreatedByUserID(), summary.getCurrency(), summary.getCreatedTime(), summary.getLastTransactionID(), summary.getOpenTradeCount());

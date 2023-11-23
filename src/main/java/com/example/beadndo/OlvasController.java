@@ -30,7 +30,7 @@ public class OlvasController implements Initializable {
     @FXML
     public TableView<osszesites> olvas_tablazat;
     @FXML
-    public TableColumn<osszesites, Integer>  azonosito_column;
+    public TableColumn<osszesites, Integer> azonosito_column;
     @FXML
     public TableColumn<osszesites, String> pizza_nev_column;
     @FXML
@@ -52,17 +52,14 @@ public class OlvasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(connectionModel.isDbConnected())
-        {
+        if (connectionModel.isDbConnected()) {
             showAdat();
-        }
-        else{
+        } else {
 
         }
     }
 
-    public ObservableList<osszesites> getOsszAdat()
-    {
+    public ObservableList<osszesites> getOsszAdat() {
         ObservableList<osszesites> osszadatLista = FXCollections.observableArrayList();
         Connection connection = Connector();
         String query = "select * from kategoria inner join pizza on kategoria.nev = pizza.kategorianev inner join rendeles on pizza.nev = rendeles.pizzanev";
@@ -72,17 +69,17 @@ public class OlvasController implements Initializable {
             st = connection.createStatement();
             rs = st.executeQuery(query);
             osszesites mindenadat;
-            while(rs.next())
-            {
-                mindenadat = new osszesites(rs.getString("pizzanev"), rs.getString("kategorianev"), rs.getBoolean("vegetarianus"),rs.getInt("az"), rs.getInt("darab"), rs.getString("felvetel"), rs.getString("kiszallitas"), rs.getInt("ar"));
+            while (rs.next()) {
+                mindenadat = new osszesites(rs.getString("pizzanev"), rs.getString("kategorianev"), rs.getBoolean("vegetarianus"), rs.getInt("az"), rs.getInt("darab"), rs.getString("felvetel"), rs.getString("kiszallitas"), rs.getInt("ar"));
                 osszadatLista.add(mindenadat);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return osszadatLista;
     }
-    public void showAdat(){
+
+    public void showAdat() {
         ObservableList<osszesites> list = getOsszAdat();
 
         azonosito_column.setCellValueFactory(new PropertyValueFactory<osszesites, Integer>("az"));
@@ -110,14 +107,12 @@ public class OlvasController implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
-
-
 
 
 }

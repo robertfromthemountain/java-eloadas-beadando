@@ -34,9 +34,9 @@ public class IrController implements Initializable {
     @FXML
     public Button vissza_button;
     @FXML
-    private Label isConnected;
-    @FXML
     public Button postapi_button;
+    @FXML
+    private Label isConnected;
 
     public void beszuras_click(ActionEvent event) {
         String query = "insert into pizza values (\"" + pizza_nev_textField.getText() + "\",\"" + kategoria_nev_textField.getText() + "\"," + vega_Button.isSelected() + ")";
@@ -50,17 +50,17 @@ public class IrController implements Initializable {
         try {
             st = connection.createStatement();
             st.executeUpdate(query);
-        }catch (Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(connectionModel.isDbConnected())
-        {
+        if (connectionModel.isDbConnected()) {
 
-        }
-        else{
+        } else {
 
         }
     }
@@ -74,14 +74,15 @@ public class IrController implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
+
     public void postapi_click(ActionEvent event) throws IOException {
-        POST("Horváth János", "male", "kalpat_example@data.hu","active");
+        POST("Horváth János", "male", "kalpat_example@data.hu", "active");
 
     }
 }

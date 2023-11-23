@@ -32,19 +32,16 @@ public class TorolController implements Initializable {
     public ChoiceBox azonosito_choiceBox;
     @FXML
     public Button vissza_button;
-
-    @FXML
-    private Label isConnected;
     @FXML
     public Button deleteapi_button;
+    @FXML
+    private Label isConnected;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(connectionModel.isDbConnected())
-        {
+        if (connectionModel.isDbConnected()) {
             getOsszAzonosito();
-        }
-        else{
+        } else {
 
         }
     }
@@ -54,6 +51,7 @@ public class TorolController implements Initializable {
         executeQuery(query);
         isConnected.setText("Rendelés törlés sikeres");
     }
+
     private void executeQuery(String query) {
         Connection connection = Connector();
         Statement st;
@@ -64,8 +62,8 @@ public class TorolController implements Initializable {
             e.printStackTrace();
         }
     }
-    public ArrayList<Integer> getOsszAzonosito()
-    {
+
+    public ArrayList<Integer> getOsszAzonosito() {
         ArrayList<Integer> osszAzLista = new ArrayList<>();
         Connection connection = Connector();
         String query = "select az from rendeles";
@@ -75,12 +73,11 @@ public class TorolController implements Initializable {
             st = connection.createStatement();
             rs = st.executeQuery(query);
             int azonositok;
-            while(rs.next())
-            {
+            while (rs.next()) {
                 azonositok = rs.getInt("az");
                 osszAzLista.add(azonositok);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         for (int var : osszAzLista) {
@@ -99,14 +96,15 @@ public class TorolController implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
     }
+
     public void deleteapi_click(ActionEvent event) throws IOException {
-        String ID="3399";
+        String ID = "3399";
         DELETE(ID);
         GET(ID);
 

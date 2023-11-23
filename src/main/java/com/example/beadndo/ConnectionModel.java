@@ -1,21 +1,22 @@
 package com.example.beadndo;
+
 import java.sql.*;
 
 public class ConnectionModel {
     Connection connection;
-    public ConnectionModel()
-    {
+
+    public ConnectionModel() {
         connection = SqliteConnection.Connector();
-        if ( connection == null) {
+        if (connection == null) {
             System.out.println("Nem sikerült kapcsolódni");
             System.exit(1);
         }
     }
-    public boolean isDbConnected(){
-        try{
+
+    public boolean isDbConnected() {
+        try {
             return !connection.isClosed();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }

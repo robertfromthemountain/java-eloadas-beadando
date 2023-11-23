@@ -21,10 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,12 +38,35 @@ public class AktualisArakController implements Initializable {
     public Label legutobbi_label;
 
     public void mutat_click(ActionEvent event) {
-
-        Context ctx = new ContextBuilder(Config.URL).setToken(Config.TOKEN).setApplication("PricePolling").build();
-        AccountID accountId = Config.ACCOUNTID;
-        List<String> instruments = new ArrayList<>( Arrays.asList(devizaParok_choiceBox.getValue()));
         try {
-            PricingGetRequest request = new PricingGetRequest(accountId, instruments);
+            arfolyam_label.setText("");
+            Context ctx = new ContextBuilder(Config.URL).setToken(Config.TOKEN).setApplication("PricePolling").build();
+            AccountID accountId = Config.ACCOUNTID;
+            String instruments = "valami";
+            if (Objects.equals(devizaParok_choiceBox.getValue(), "EUR - USD")) {
+                instruments = "EUR_USD";
+            }
+            if (Objects.equals(devizaParok_choiceBox.getValue(), "USD - JPY")) {
+                instruments = "USD_JPY";
+
+            }
+            if (Objects.equals(devizaParok_choiceBox.getValue(), "GBP - USD")) {
+                instruments = "GBP_USD";
+
+            }
+            if (Objects.equals(devizaParok_choiceBox.getValue(), "USD - CHF")) {
+                instruments = "USD_CHF";
+            }
+
+            PricingGetRequest request = new PricingGetRequest(accountId, Collections.singleton(instruments));
+            PricingGetResponse resp = ctx.pricing.get(request);
+            for (ClientPrice price : resp.getPrices())
+                arfolyam_label.setText(devizaParok_choiceBox.getValue() + " : " + price.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+          /*  PricingGetRequest request = new PricingGetRequest(accountId, instruments);
             DateTime since = null;
             while (true) {
                 if (since != null)
@@ -62,7 +82,7 @@ public class AktualisArakController implements Initializable {
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
     public void vissza_click(ActionEvent event) {
@@ -74,7 +94,7 @@ public class AktualisArakController implements Initializable {
             stage.setTitle("Netpizza");
             stage.setScene(scene);
             stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
